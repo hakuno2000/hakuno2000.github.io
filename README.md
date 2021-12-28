@@ -1,0 +1,1 @@
+# hakuno2000.github.io
