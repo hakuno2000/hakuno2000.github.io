@@ -1,32 +1,20 @@
-## Welcome to GitHub Pages
+## Chào mừng đến với blog của Vink Vink
 
-You can use the [editor on GitHub](https://github.com/hakuno2000/hakuno2000.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+Ban đầu thì mình chỉ định thử deploy để test cái Github Pages, xong thấy tiện nên cũng bắt tay vào sửa luôn.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Ngôn ngữ yêu thích của mình
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Cũng không hẳn là yêu thích cơ mà chắc là thứ mình dùng nhiều nhất từ lúc vào đời sinh viên, còn nếu tính thời cấp 3 thì phải là C++ vì dùng cho giải thuật nhiều.
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+}
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+Thi thoảng mình vẫn làm vài bài giải thuật cơ bản như [bài này](https://github.com/hakuno2000/word_index).
 
 ### Jekyll Themes
 
