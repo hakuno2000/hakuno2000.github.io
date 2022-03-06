@@ -19,6 +19,7 @@ public class HelloWorld {
 Thi thoảng mình vẫn làm vài bài giải thuật cơ bản như [bài này](https://github.com/hakuno2000/word_index).
 
 ### Một vài thứ linh tinh
+- [Web văn mẫu](https://vanmau.vercel.app/)
 - [Web review môn học](https://mycoursesreview.herokuapp.com)
 
 ### Liên hệ
