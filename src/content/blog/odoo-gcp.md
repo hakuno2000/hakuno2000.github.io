@@ -10,13 +10,13 @@ tags:
   - gcp
   - cloudsql
 ogImage: ""
-description:
-  "Guide tự viết cho bản thân nếu phải cài Odoo lên GKE lần nữa"
+description: "Guide tự viết cho bản thân nếu phải cài Odoo lên GKE lần nữa"
 ---
 
 Bài viết mình có tham khảo từ [guide chính chủ](https://cloud.google.com/sql/docs/postgres/connect-instance-kubernetes). Để chạy các lệnh gcloud ta có thể dùng trực tiếp Cloud Shell trên web hoặc cài gcloud CLI trên terminal.
 
 Truớc khi bắt đầu chúng ta cần enable các API sau:
+
 - Compute Engine API
 - Cloud SQL Admin API
 - Google Kubernetes Engine API
@@ -48,7 +48,7 @@ gcloud iam service-accounts create gke-service-account \
   --display-name="GKE Service Account"
 ```
 
-Chạy tiếp ```gcloud projects add-iam-policy-binding``` để gán role **Cloud SQL Client** cho service account vừa tạo. Phần odoo-lab-vsi là ID của project mình tạo.
+Chạy tiếp `gcloud projects add-iam-policy-binding` để gán role **Cloud SQL Client** cho service account vừa tạo. Phần odoo-lab-vsi là ID của project mình tạo.
 
 ```
 gcloud projects add-iam-policy-binding odoo-lab-vsi \
@@ -65,9 +65,9 @@ metadata:
   name: ksa-bidv-cloudsql
 ```
 
-Chạy lệnh ```kubectl apply -f service-account.yaml```.
+Chạy lệnh `kubectl apply -f service-account.yaml`.
 
-Với lệnh ```add-iam-policy-binding``` ta sẽ bind service account của Google Cloud và k8s với nhau.
+Với lệnh `add-iam-policy-binding` ta sẽ bind service account của Google Cloud và k8s với nhau.
 
 ```
 gcloud iam service-accounts add-iam-policy-binding \
@@ -165,9 +165,9 @@ spec:
 
 Trong file này thì cần chú ý là phần image các bạn có thể để image của Odoo trên Docker Hub, cái image này của mình là mình push lên **Artifact Registry** của GCP.
 
-Chạy ```kubectl apply -f deployment.yaml``` để deploy. 
+Chạy `kubectl apply -f deployment.yaml` để deploy.
 
-Cuối cùng ta tạo service để truy cập web từ bên ngoài với lệnh ```kubectl apply -f service.yaml```. File serivce thì như sau
+Cuối cùng ta tạo service để truy cập web từ bên ngoài với lệnh `kubectl apply -f service.yaml`. File serivce thì như sau
 
 ```
 apiVersion: v1
@@ -182,3 +182,5 @@ spec:
   - port: 80
     targetPort: 8069
 ```
+
+Sau khi xong ta lấy external IP của service để truy cập từ trình duyệt ở port 8069 sẽ thấy giao diện khởi tạo của Odoo.
