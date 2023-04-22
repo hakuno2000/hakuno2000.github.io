@@ -7,7 +7,7 @@ export const SITE: Site = {
   title: "Vink's blog",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
-  postPerPage: 3,
+  postPerPage: 10,
 };
 
 export const LOCALE = ["en-EN"]; // set to [] to use the environment default
@@ -28,15 +28,21 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "Facebook",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://www.facebook.com/vinhnq241200",
     linkTitle: `${SITE.title} on Facebook`,
+    active: true,
+  },
+  {
+    name: "Discord",
+    href: "https://discord.com/users/317331260747939852",
+    linkTitle: `${SITE.title} on Discord`,
     active: true,
   },
   {
     name: "Instagram",
     href: "https://www.instagram.com/vink.vink.2k",
     linkTitle: `${SITE.title} on Instagram`,
-    active: true,
+    active: false,
   },
   {
     name: "LinkedIn",
@@ -97,12 +103,6 @@ export const SOCIALS: SocialObjects = [
     href: "https://github.com/satnaing/astro-paper",
     linkTitle: `${SITE.title} on CodePen`,
     active: false,
-  },
-  {
-    name: "Discord",
-    href: "https://discord.com/users/317331260747939852",
-    linkTitle: `${SITE.title} on Discord`,
-    active: true,
   },
   {
     name: "GitLab",

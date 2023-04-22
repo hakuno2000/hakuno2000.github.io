@@ -41,7 +41,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </a> -->
 
       <p>
-        Trong lúc lăn lộn cày Cloud Skills Boost để học GCP thì mình chợt nảy ra ý nghĩ note lại mấy cái bài Challange Lab. Lúc đầu cũng hì hục lưu vào mấy file markdown trên Github, xong sau thấy đần quá nên lại đi mò mẫm kiếm mấy cái static site generator để làm con blog deploy trên Github Pages.
+        Nơi mình viết linh tinh về những thứ mình gặp phải trong lúc học về Google Cloud và Devops
       </p>
       <p>
         Còn đây là profile
@@ -50,13 +50,14 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           href="https://www.cloudskillsboost.google/public_profiles/500fbf94-e166-4b32-ad1e-2a0b8fa56875"
         >
           Cloud Skills Boost
-        </LinkButton> của mình.
+        </LinkButton> của mình
       </p>
+      <br>
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
-            <div class="social-links">Mấy cái tài khoản của mình</div>
+            <div class="social-links">Bạn có thể liên hệ với mình qua</div>
             <Socials />
           </div>
         )
@@ -69,7 +70,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       featuredPosts.length > 0 && (
         <>
           <section id="featured">
-            <h2>Featured</h2>
+            <h2>Bài viết thú vị</h2>
             <ul>
               {featuredPosts.map(({ data }) => (
                 <Card
@@ -86,7 +87,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     }
 
     <section id="recent-posts">
-      <h2>Recent Posts</h2>
+      <h2>Nóng hổi mới ra lò</h2>
       <ul>
         {
           sortedPosts.map(
