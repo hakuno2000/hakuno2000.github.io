@@ -1,5 +1,5 @@
 {
-  "name": "astronautical-apogee",
+  "name": "cloud-content",
   "version": "2.2.0",
   "scripts": {
     "dev": "astro check --watch & astro dev",

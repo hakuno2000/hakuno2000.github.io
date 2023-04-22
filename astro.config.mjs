@@ -8,7 +8,8 @@ import { SITE } from "./src/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE.website,
+  site: 'https://hakuno2000.github.io',
+  base: '/cloud-content',
   integrations: [
     tailwind({
       config: {
