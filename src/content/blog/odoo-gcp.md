@@ -35,7 +35,7 @@ Truy cập trang **Google Kubernetes Engine** trên console Google Cloud để t
 
 Sau khi tạo cluster (sẽ mất chút thời gian đợi) thì ta chạy lệnh sau để gcloud và kubectl kết nối với cluster vừa tạo, trong đó autopilot-cluster-1 là tên mình cluster vừa tạo.
 
-```
+```cmd
 gcloud container clusters get-credentials autopilot-cluster-1 --region asia-southeast1
 ```
 
@@ -43,14 +43,14 @@ gcloud container clusters get-credentials autopilot-cluster-1 --region asia-sout
 
 GKE sẽ cần một service account với role **Cloud SQL Client** để có quyền connect tới Cloud SQL. Đầu tiên, mình dùng lệnh gcloud iam service-accounts create để tạo mới service account có tên gke-service-account.
 
-```
+```cmd
 gcloud iam service-accounts create gke-service-account \
   --display-name="GKE Service Account"
 ```
 
 Chạy tiếp `gcloud projects add-iam-policy-binding` để gán role **Cloud SQL Client** cho service account vừa tạo. Phần odoo-lab-vsi là ID của project mình tạo.
 
-```
+```cmd
 gcloud projects add-iam-policy-binding odoo-lab-vsi \
   --member="serviceAccount:gke-service-account@odoo-lab-vsi.iam.gserviceaccount.com" \
   --role="roles/cloudsql.client"
@@ -58,7 +58,7 @@ gcloud projects add-iam-policy-binding odoo-lab-vsi \
 
 Sau khi xong bạn vẫn cần tạo thêm k8s service account và bind nó với service account của Google Cloud. Ta tạo file service-account.yaml như sau để tạo service account tên là ksa-bidv-cloudsql.
 
-```
+```yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -69,7 +69,7 @@ Chạy lệnh `kubectl apply -f service-account.yaml`.
 
 Với lệnh `add-iam-policy-binding` ta sẽ bind service account của Google Cloud và k8s với nhau.
 
-```
+```cmd
 gcloud iam service-accounts add-iam-policy-binding \
   --role="roles/iam.workloadIdentityUser" \
   --member="serviceAccount:odoo-lab-vsi.svc.id.goog[default/ksa-bidv-cloudsql]" \
@@ -78,7 +78,7 @@ gcloud iam service-accounts add-iam-policy-binding \
 
 Cuối cùng dùng lệnh sau để hoàn tất việc bind
 
-```
+```cmd
 kubectl annotate serviceaccount \
   ksa-bidv-cloudsql  \
   iam.gke.io/gcp-service-account=gke-service-account@odoo-lab-vsi.iam.gserviceaccount.com
@@ -88,7 +88,7 @@ kubectl annotate serviceaccount \
 
 Để lưu user và password của database và truyền vào trong file deployment của GKE thì mình tạo secret. Phần username và password điền theo thông tin bạn đã tạo ở bước trước.
 
-```
+```cmd
 kubectl create secret generic gke-cloud-sql-secrets \
   --from-literal=database=odoo \
   --from-literal=username=odoo \
@@ -99,7 +99,7 @@ kubectl create secret generic gke-cloud-sql-secrets \
 
 Trong phần **Workloads** trên menu navigation của GKE có lựa chọn cho mình deploy image từ registry của Google nhưng sẽ hơi khó edit sau khi tạo nên mình dùng file deployment.yaml để deploy.
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -169,7 +169,7 @@ Chạy `kubectl apply -f deployment.yaml` để deploy.
 
 Cuối cùng ta tạo service để truy cập web từ bên ngoài với lệnh `kubectl apply -f service.yaml`. File serivce thì như sau
 
-```
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
