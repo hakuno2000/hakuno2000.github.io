@@ -26,13 +26,13 @@ Cloud VPN là giải pháp low cost với băng thông thấp còn Cloud Interco
 
 Cloud Router cung cấp dynamic routing bằng cách dùng Border Gateway Protocol với kết nối của Cloud Interconnect và gateway Cloud VPN.
 
-Có 2 loại VPN gateway là ******\*\*******HA VPN******\*\******* và ********\*\*********Classic VPN********\*\*********.
+Có 2 loại VPN gateway là **HA VPN** và **Classic VPN**.
 
 Có 2 lựa chọn cho Cloud Interconnect là Dedicated Interconnect và Partner Interconnect.
 
 ### 2. Network
 
-Trên GCP thì thường dùng 2 loại kiến trúc cho network là **********\*\***********Shared VPC**********\*\*********** và ************\*\*************Hub-and-spoke************\*\*************. Tuy Shared VPC phổ biến hơn và đa phần trường hợp dùng kiến trúc này nhưng ta trong mô hình Hub-and-spoke ta có thể sử dụng Shared VPC.
+Trên GCP thì thường dùng 2 loại kiến trúc cho network là **Shared VPC** và **Hub-and-spoke**. Tuy Shared VPC phổ biến hơn và đa phần trường hợp dùng kiến trúc này nhưng ta trong mô hình Hub-and-spoke ta có thể sử dụng Shared VPC.
 
 ![Một số yếu tố giúp quyết định network design. ](https://cloud.google.com/static/architecture/landing-zones/images/decide-network-design-flow.svg)
 
@@ -46,8 +46,8 @@ Tài nguyên trong mạng Shared VPC kết nối với nhau qua internal IP addr
 
 Khi triển khai với Landing zone ta sẽ dựng Shared VPC network cho từng môi trường (dev, test, prod). Mô hình này giúp các môi trường độc lập với nhau. Khi muốn giao tiếp giữa các môi trường, có thể sử dụng:
 
-- ******\*\*******VPC Peering******\*\*******
-- **\*\***HA VPN**\*\***
+- **VPC Peering**
+- **HA VPN**
 - **Multi-NIC appliance**
 
 ![Sơ đồ bậc cao thiết kế mạng nếu dựng bằng fabric FAST](https://raw.githubusercontent.com/GoogleCloudPlatform/cloud-foundation-fabric/master/fast/stages/2-networking-d-separate-envs/diagram.svg)
@@ -70,17 +70,17 @@ Mô hình này mang đến sự phân nhánh giữa các môi trường ở mứ
 
 Nhìn chung việc triển khai mô hình chủ yếu sẽ rơi vào 3 trường hợp dựa theo cách kết nối trong nội bộ:
 
-- ****\*\*\*\*****HA VPN****\*\*\*\*****
+- **HA VPN**
   - Ưu điểm: tương thích tốt với các dịch vụ của GCP giúp tận dụng khả năng kết nối nội bộ, quản lý route dễ dàng, tránh được peering group shared quota và limit.
   - Nhược điểm: tốn thêm chi phí, có thể làm tăng độ trễ, cần dùng nhiều tunnel để tối đa băng thông.
   ![1](https://raw.githubusercontent.com/GoogleCloudPlatform/cloud-foundation-fabric/master/fast/stages/2-networking-a-peering/diagram.svg)
 
 ---
 
-******\*\*******VPC Peering******\*\*******
+- **VPC Peering**
 
-- Ưu điểm: không tốn thêm chi phí, tối đa băng thông mà không cần cài đặt hay cấu hình, không thêm độ trễ, các môi trường đều được cô lập.
-- Nhược điểm: không có khả năng chuyển tiếp, “no selective exchange of routes”, một số quota và limit sẽ chia ra giữa các VPC trong cùng peering group.
+  - Ưu điểm: không tốn thêm chi phí, tối đa băng thông mà không cần cài đặt hay cấu hình, không thêm độ trễ, các môi trường đều được cô lập.
+  - Nhược điểm: không có khả năng chuyển tiếp, “no selective exchange of routes”, một số quota và limit sẽ chia ra giữa các VPC trong cùng peering group.
 
 ![2](https://raw.githubusercontent.com/GoogleCloudPlatform/cloud-foundation-fabric/master/fast/stages/2-networking-b-vpn/diagram.svg)
 
