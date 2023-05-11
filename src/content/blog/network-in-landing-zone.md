@@ -30,7 +30,7 @@ Có 2 loại VPN gateway là **HA VPN** và **Classic VPN**.
 
 Có 2 lựa chọn cho Cloud Interconnect là Dedicated Interconnect và Partner Interconnect.
 
-### 2. Network
+# 2. Network
 
 Trên GCP thì thường dùng 2 loại kiến trúc cho network là **Shared VPC** và **Hub-and-spoke**. Tuy Shared VPC phổ biến hơn và đa phần trường hợp dùng kiến trúc này nhưng ta trong mô hình Hub-and-spoke ta có thể sử dụng Shared VPC.
 
