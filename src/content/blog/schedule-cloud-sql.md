@@ -21,13 +21,13 @@ Trong guide này thì mình sẽ lập lịch cho instance Cloud SQL nên đầu
 Vào phần [Cloud Function](https://console.cloud.google.com/functions) trên Cloud Console rồi chọn CREATE FUNCTION.
 
 <p align="center">
-  <img src="src/content/blog/image/Screenshot from 2023-05-15 15-01-42.png" alt="Create function">
+  <img src="https://raw.githubusercontent.com/hakuno2000/hakuno2000.github.io/master/src/content/blog/image/Screenshot%20from%202023-05-15%2015-01-42.png" alt="Create function">
 </p>
 
 Phần Eventarc Trigger ta chọn Cloud Pub/Sub, chọn topic đã có từ trước hoặc tạo mới, của mình thì tạo mới một topic lấy tên là InstanceMgmt.
 
 <p align="center">
-  <img src="src/content/blog/image/Screenshot from 2023-05-15 15-09-59.png" alt="Create trigger">
+  <img src="https://raw.githubusercontent.com/hakuno2000/hakuno2000.github.io/master/src/content/blog/image/Screenshot%20from%202023-05-15%2015-09-59.png" alt="Create trigger">
 </p>
 
 Sau khi xong thì Save Trigger rồi chon Next để sang bước tiếp theo. Phần này sẽ là code của function, mình chọn Go Runtime và xài đoạn code sẵn từ blog của Google như sau:
@@ -114,7 +114,7 @@ func ProcessPubSub(ctx context.Context, m PubSubMessage) error {
 Truy cập vào mục [IAM](https://console.cloud.google.com/iam-admin) và thêm role cho "App Engine default service account" như trong hình:
 
 <p align="center">
-  <img src="src/content/blog/image/Screenshot from 2023-05-15 15-33-00.png" alt="Add role">
+  <img src="https://raw.githubusercontent.com/hakuno2000/hakuno2000.github.io/master/src/content/blog/image/Screenshot%20from%202023-05-15%2015-33-00.png" alt="Add role">
 </p>
 
 # 4. Tạo Cloud Scheduler Job để lập lịch cho Cloud Function
@@ -122,13 +122,13 @@ Truy cập vào mục [IAM](https://console.cloud.google.com/iam-admin) và thê
 Vào phần [Cloud Scheduler](https://console.cloud.google.com/cloudscheduler) trên Cloud Console rồi chọn CREATE JOB.
 
 <p align="center">
-  <img src="src/content/blog/image/Screenshot from 2023-05-15 15-44-36.png" alt="Add job">
+  <img src="https://raw.githubusercontent.com/hakuno2000/hakuno2000.github.io/master/src/content/blog/image/Screenshot%20from%202023-05-15%2015-44-36.png" alt="Add job">
 </p>
 
 Điền các thông tin như hình, trong đó phần Frequency sẽ viết theo unix-cron giống như khi tạo cron job. Sau đó sang phần Configure the execution.
 
 <p align="center">
-  <img src="src/content/blog/image/Screenshot from 2023-05-15 18-07-16.png" alt="Add message body">
+  <img src="https://raw.githubusercontent.com/hakuno2000/hakuno2000.github.io/master/src/content/blog/image/Screenshot%20from%202023-05-15%2018-07-16.png" alt="Add message body">
 </p>
 
 Chọn Target type là Pub/Sub rồi chọn topic lúc trước ta đã tạo là InstanceMgmt. Phần Message body thì sử dụng code json:
