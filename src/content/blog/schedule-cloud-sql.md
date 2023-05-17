@@ -32,7 +32,7 @@ Phần Eventarc Trigger ta chọn Cloud Pub/Sub, chọn topic đã có từ trư
 
 Sau khi xong thì Save Trigger rồi chon Next để sang bước tiếp theo. Phần này sẽ là code của function, mình chọn Go Runtime và xài đoạn code sẵn từ blog của Google như sau:
 
-```Go
+```go
 // Package p contains a Pub/Sub Cloud Function.
 package p
 
